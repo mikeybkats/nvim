@@ -1,3 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/Users/michaelbarakat/.config/nvim/.cache/init.vim'
+let g:netrw_dirhist_2='/Users/michaelbarakat/react-projects/react-quickly/ch03'
+let g:netrw_dirhist_3='/Users/michaelbarakat/react-projects/react-quickly/ch03/hello-world-class-jsx'
+let g:netrw_dirhist_4='/Users/michaelbarakat/react-projects/react-quickly/ch03/hello-world-class-jsx/js'

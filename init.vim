@@ -56,8 +56,6 @@ let g:NumberToggleTrigger="<F2>"
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
-autocmd BufWinEnter * NERDTreeMirror
-
 colo solarized
 
 let g:deoplete#enable_at_startup=1
@@ -75,6 +73,11 @@ set history=50
 set showcmd
 set incsearch
 
+filetype plugin indent on
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
 set relativenumber
 set number
 
@@ -82,5 +85,4 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 nnoremap <C-e> :NERDTreeToggle<CR>
 		
 filetype on
-filetype plugin indent on
 syntax enable
