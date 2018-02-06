@@ -1,6 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Users/michaelbarakat/.config/nvim/.cache/init.vim'
-let g:netrw_dirhist_2='/Users/michaelbarakat/react-projects/react-quickly/ch03'
-let g:netrw_dirhist_3='/Users/michaelbarakat/react-projects/react-quickly/ch03/hello-world-class-jsx'
-let g:netrw_dirhist_4='/Users/michaelbarakat/react-projects/react-quickly/ch03/hello-world-class-jsx/js'
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/michaelbarakat/sites/momm/wordpress/wp-content/themes/laurel'
+let g:netrw_dirhist_2='/Users/michaelbarakat/sites/we_are_1'
+let g:netrw_dirhist_3='/Users/michaelbarakat/sites/we_are_1/app'
+let g:netrw_dirhist_4='/Users/michaelbarakat/sites/we_are_1/app/views'
+let g:netrw_dirhist_5='/Users/michaelbarakat/sites/we_are_1/app'
+let g:netrw_dirhist_6='/Users/michaelbarakat/sites/myNewSite'

@@ -2,21 +2,26 @@ if &compatible
 set nocompatible
 endif
 
-set runtimepath+=/Users/michaelbarakat/.config/nvim/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.config/nvim/dein.vim
 
-call dein#begin('/Users/michaelbarakat/.config/nvim/')
+call dein#begin('/Users/michaelbarakat/.config/nvim')
 
 call dein#add('Shougo/dein.vim')
-
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
-call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+call dein#add('Shougo/vimproc.vim', {'build' : {'mac' : 'make'}})
 call dein#add('Shougo/deoplete.nvim')
+call dein#add('Shougo/denite.nvim')
 call dein#add('vim-airline/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
 call dein#add('scrooloose/nerdcommenter')	
 call dein#add('scrooloose/nerdtree', {'on_cmd': 'NERDTreeToggle'})
-call dein#add('vim-javascript')
-call dein#add('fuzzyfinder')
+call dein#add('jeffkreeftmeijer/vim-numbertoggle')
+call dein#add('vim-scripts/FuzzyFinder')
+call dein#add('junegunn/fzf.vim')
+call dein#add('mattn/emmet-vim')
+call dein#local('~/.config/nvim/autoload/')
+call dein#end()
 
 let g:airline_theme='solarized'
 let g:airline_powerline_fonts=1
@@ -46,13 +51,12 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
-call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
-
-call dein#end()
-
 let g:javascript_plugin_jsdoc = 1
 
-autocmd BufWinEnter * NERDTreeMirror
+let g:NumberToggleTrigger="<F2>"
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 colo solarized
 
@@ -71,6 +75,11 @@ set history=50
 set showcmd
 set incsearch
 
+filetype plugin indent on
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
 set relativenumber
 set number
 
@@ -78,5 +87,4 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 nnoremap <C-e> :NERDTreeToggle<CR>
 		
 filetype on
-filetype plugin indent on
 syntax enable
