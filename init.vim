@@ -15,7 +15,6 @@ Plug 'scrooloose/nerdcommenter'
 "Syntax highlighting and indenting for JSX (needs pangloss/vim-javascript)
 Plug 'mxw/vim-jsx'
 
-
 "Neosnippet plug-In adds snippet support to Vim. Snippets are small templates for commonly used code that you can fill in on the fly. 
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
@@ -31,7 +30,6 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim', { 'dir': '~/.fzf', 'do': './install --all' }
 
-
 "provides an asynchronous keyword completion system in the current buffer
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -42,6 +40,12 @@ else
 endif
 let g:deoplete#enable_at_startup = 1
 
+"provides visual indenting guides
+Plug 'Yggdroot/indentLine'
+let g:indentLine_color_term = 239
+"let g:indentLine_bgcolor_term = 202
+let g:indentLine_enabled = 1
+"let g:indentLine_char = ''
 
 "providing linting in NeoVim
 Plug 'w0rp/ale'
@@ -56,6 +60,9 @@ Plug 'digitaltoad/vim-pug'
 
 " Syntax highlighting for c
 Plug 'justinmk/vim-syntax-extra'
+
+" Syntax highlighting for c#
+Plug 'OrangeT/vim-csharp'
 
 " Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'elzr/vim-json'
@@ -78,7 +85,7 @@ Plug 'vim-airline/vim-airline-themes'
 "Plug 'liuchengxu/space-vim-dark'
 call plug#end()
 
-let g:NERDTreeChDirMode = 1
+"let g:NERDTreeChDirMode=1 
 
 "let g:airline_theme='solarized'
 let g:airline_theme='base16'
@@ -171,6 +178,7 @@ colo apprentice
 "colo visualstudiodark 
 
 set nocp
+set autoindent
 set backspace=indent,eol,start
 set hls is
 set ruler
@@ -196,12 +204,13 @@ set number
 
 
 "key remaps
+inoremap { {<CR>}<Esc>ko
 nnoremap <F2> :set relativenumber!<CR> 
 nnoremap <F3> :set invnumber<CR>
 nnoremap <F4> :set wrap!<CR>
 nnoremap <silent> <C-l> :nohl<CR><C-l>
-nnoremap <C-e> :NERDTreeToggle .<CR>
-nnoremap <C-n> :NERDTreeToggle .<CR>
+nnoremap <C-e> :NERDTreeToggle ./<CR>
+nnoremap <C-n> :NERDTreeToggle ./<CR>
 nnoremap <C-f>r :NERDTreeFind<CR>
 nnoremap <C-p> :FZF<CR>
 vnoremap <C-c> "*y
