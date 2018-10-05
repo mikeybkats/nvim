@@ -10,10 +10,8 @@ let g:python3_host_prog = '/Users/michaelbarakat/.pyenv/versions/neovim3/bin/pyt
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'scrooloose/nerdtree'
+let NERDTreeShowHidden=1
 Plug 'scrooloose/nerdcommenter'
-
-"Syntax highlighting and indenting for JSX (needs pangloss/vim-javascript)
-Plug 'mxw/vim-jsx'
 
 "Neosnippet plug-In adds snippet support to Vim. Snippets are small templates for commonly used code that you can fill in on the fly. 
 Plug 'Shougo/neosnippet'
@@ -29,6 +27,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim', { 'dir': '~/.fzf', 'do': './install --all' }
+"let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 
 "provides an asynchronous keyword completion system in the current buffer
 if has('nvim')
@@ -67,8 +66,24 @@ Plug 'OrangeT/vim-csharp'
 " Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'elzr/vim-json'
 Plug 'pangloss/vim-javascript'
+let g:javascript_plugin_flow = 1
+
+"Syntax highlighting and indenting for JSX (needs pangloss/vim-javascript)
+Plug 'mxw/vim-jsx'
+let g:jsx_ext_required = 0
+
+Plug 'vim-syntastic/syntastic'
+
 Plug 'jelera/vim-javascript-syntax'
 Plug 'mattn/emmet-vim'
+
+"let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_settings = {
+  \  'javascript.js' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
+
 Plug 'jaxbot/semantic-highlight.vim'
 Plug 'isruslan/vim-es6'
 
@@ -83,9 +98,13 @@ Plug 'roman/golden-ratio'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 "Plug 'liuchengxu/space-vim-dark'
+
+Plug 'skywind3000/asyncrun.vim'
+autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
+
 call plug#end()
 
-"let g:NERDTreeChDirMode=1 
+let g:NERDTreeChDirMode=0 
 
 "let g:airline_theme='solarized'
 let g:airline_theme='base16'
@@ -130,10 +149,14 @@ let g:airline#extensions#ale#enabled = 1
 " This is off by default.
 let g:ale_sign_column_always = 1
 let g:ale_fixers = {
-\   'javascript': ['eslint'],
+\   'javascript': ['prettier', 'eslint'],
 \}
 let g:ale_fix_on_save = 1
-let g:ale_sign_error = '>>'
+"let g:ale_sign_error = '>>'
+let g:ale_sign_error = '●' 
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0 "
+
 let g:airline#extensions#ale#enabled = 1
 
 """"""""""""""
@@ -170,7 +193,7 @@ endif
 
 let $NVIM_TUI_ENABLE_TRUE_COLORS=1
 syntax enable
-"set background=dark
+set background=dark
 colo apprentice 
 "colo space-vim-dark 
 "colo solarized8_high
@@ -179,6 +202,8 @@ colo apprentice
 
 set nocp
 set autoindent
+set autoread
+set noautochdir
 set backspace=indent,eol,start
 set hls is
 set ruler
@@ -192,7 +217,12 @@ set backupdir=~/vim-temp-files
 set mouse=a
 set ma
 
+autocmd VimEnter * lcd %:p:h
 autocmd BufEnter * lcd %:p:h
+autocmd VimEnter * NERDTree
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 filetype plugin indent on
 set tabstop=2
@@ -202,15 +232,14 @@ set expandtab
 set relativenumber
 set number
 
-
 "key remaps
-inoremap { {<CR>}<Esc>ko
+"inoremap { {<CR>}<Esc>ko
 nnoremap <F2> :set relativenumber!<CR> 
 nnoremap <F3> :set invnumber<CR>
 nnoremap <F4> :set wrap!<CR>
 nnoremap <silent> <C-l> :nohl<CR><C-l>
-nnoremap <C-e> :NERDTreeToggle ./<CR>
-nnoremap <C-n> :NERDTreeToggle ./<CR>
+nnoremap <C-e> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-f>r :NERDTreeFind<CR>
 nnoremap <C-p> :FZF<CR>
 vnoremap <C-c> "*y
