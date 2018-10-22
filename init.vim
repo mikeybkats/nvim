@@ -65,6 +65,11 @@ Plug 'OrangeT/vim-csharp'
 
 " Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'elzr/vim-json'
+
+" json pretty print
+Plug 'bcicen/vim-jfmt'
+let g:jfmt_autofmt  = 1
+
 Plug 'pangloss/vim-javascript'
 let g:javascript_plugin_flow = 1
 
