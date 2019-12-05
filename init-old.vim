@@ -10,7 +10,7 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'scrooloose/nerdtree'
-let NERDTreeShowHidden=0
+let NERDTreeShowHidden=1
 Plug 'scrooloose/nerdcommenter'
 
 "Neosnippet plug-In adds snippet support to Vim. Snippets are small templates for commonly used code that you can fill in on the fly. 
@@ -45,9 +45,9 @@ let g:deoplete#enable_at_startup = 1
 "provides visual indenting guides
 Plug 'Yggdroot/indentLine'
 let g:indentLine_color_term = 239
-let g:indentLine_bgcolor_term = 202
+"let g:indentLine_bgcolor_term = 202
 let g:indentLine_enabled = 1
-let g:indentLine_char = ''
+"let g:indentLine_char = ''
 
 "providing linting in NeoVim
 Plug 'w0rp/ale'
@@ -57,31 +57,31 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Sets the project root to the current Git repository by default
 Plug 'airblade/vim-rooter'
 
-"" Language syntax highlighting
+" Language syntax highlighting
 Plug 'digitaltoad/vim-pug'
 
-"" Syntax highlighting for c
+" Syntax highlighting for c
 Plug 'justinmk/vim-syntax-extra'
 
-"" Syntax highlighting for c#
+" Syntax highlighting for c#
 Plug 'OrangeT/vim-csharp'
 
-"" Syntax highlighting for TypeScript
+" Syntax highlighting for TypeScript
 Plug 'leafgarland/typescript-vim'
-"" Typescript IDE features
+" Typescript IDE features
 Plug 'Quramy/tsuquyomi'
 
-"" Plug 'Glench/Vim-Jinja2-Syntax'
+" Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'elzr/vim-json'
 
-"" json pretty print
-" for some reason this opens a new split window... why?
+" json pretty print
 Plug 'bcicen/vim-jfmt'
+let g:jfmt_autofmt  = 1
 
-"Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 let g:javascript_plugin_flow = 1
 
-""Syntax highlighting and indenting for JSX (needs pangloss/vim-javascript)
+"Syntax highlighting and indenting for JSX (needs pangloss/vim-javascript)
 Plug 'mxw/vim-jsx'
 let g:jsx_ext_required = 0
 
@@ -90,7 +90,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'mattn/emmet-vim'
 
-let g:user_emmet_leader_key='<Tab>'
+"let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = {
   \  'javascript.js' : {
     \      'extends' : 'jsx',
@@ -100,27 +100,25 @@ let g:user_emmet_settings = {
 Plug 'jaxbot/semantic-highlight.vim'
 Plug 'isruslan/vim-es6'
 
-""Highlight CSS colors
+"Highlight CSS colors
 Plug 'ap/vim-css-color'
 
-"" Quickly run Unix commands.
+" Quickly run Unix commands.
 Plug 'tpope/vim-eunuch'
 
-"" Automatically resize open splits so the current is the biggest
+" Automatically resize open splits so the current is the biggest
 Plug 'roman/golden-ratio'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'liuchengxu/space-vim-dark'
+"Plug 'liuchengxu/space-vim-dark'
 "
-""vim prettier
-Plug 'prettier/vim-prettier'
+"vim prettier
+"Plug 'prettier/vim-prettier'
 
-Plug 'skywind3000/asyncrun.vim'
+"Plug 'skywind3000/asyncrun.vim'
 autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 
 call plug#end()
-
-let g:jfmt_autofmt  = 1
 
 let g:NERDTreeChDirMode=0 
 
@@ -163,8 +161,8 @@ let g:jsx_ext_required = 1
 let g:airline#extensions#ale#enabled = 1
 
 "vim prettier
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.ts,*.js,*.json,*.css,*.scss,*.less,*.graphql,*.tsx,*.jsx Prettier
+"let g:prettier#autoformat = 0
+"autocmd BufWritePre *.js,*.json,*.css,*.scss,*.less,*.graphql,*.tsx,*.jsx Prettier
 
 " ALE
 " Set this setting in vimrc if you want to fix files automatically on save.
@@ -235,24 +233,24 @@ set ruler
 set history=50
 set showcmd
 set incsearch
-set backupcopy=yes
 set undofile
 set undodir=~/vim-temp-files
 set backupdir
 set backupdir=~/vim-temp-files
 set mouse=a
 set ma
+set history=1000
 
 autocmd VimEnter * lcd %:p:h
 autocmd BufEnter * lcd %:p:h
-"autocmd VimEnter * NERDTree
+autocmd VimEnter * NERDTree
 
 autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 filetype plugin indent on
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 set relativenumber
