@@ -5,8 +5,8 @@ endif
 set runtimepath+=~/.config/nvim/init.vim
 "set runtimepath+=/Users/michaelbarakat/.config/nvim/deoplete.nvim
 
-let g:python2_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python2_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'scrooloose/nerdtree'
@@ -127,6 +127,7 @@ let g:NERDTreeChDirMode=0
 "let g:airline_theme='solarized'
 let g:airline_theme='base16'
 let g:airline_powerline_fonts=1
+set encoding=utf-8
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
